@@ -1,19 +1,16 @@
 const express = require("express");
 
+const ArtisController = require("../controllers/artis.controller");
+// const artiscontrollerinstance = new ArtisController();
+
 // creates a new router instance.
 const router = express.Router();
 
-// create new `artis`
-router.post("/", () => {});
-// get all `artis`
-router.get("/", (req, res) => {
-  res.send({ msg: "get all artis" });
-});
-// get `artis` by id
-router.get("/:id", () => {});
-// update `artis`
-router.patch("/:id", () => {});
-// delete `artis`
-router.delete("/:id", () => {});
+// router.post("/", artiscontrollerinstance.createNewArtis);
+router.post("/", ArtisController.createNewArtis);
+router.get("/", ArtisController.getAllArtis);
+router.get("/:id", ArtisController.getArtisByID);
+router.patch("/:id", ArtisController.updateArtis);
+router.delete("/:id", ArtisController.deleteArtis);
 
 module.exports = router;
