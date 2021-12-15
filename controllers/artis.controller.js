@@ -45,6 +45,17 @@ class ArtisController {
     }
   }
 
+  static async getArtisByCondition(req, res) {
+    try {
+      const name = req.params.name;
+      const genre = req.params.genre;
+      const artisList = await ArtisModel.find({ name: name, genre: genre });
+      res.status(200).send(artisList);
+    } catch (error) {
+      res.status(500).send({ err: error });
+    }
+  }
+
   static async updateArtis(req, res) {
     try {
       // Ambil ID dari parameter
@@ -63,7 +74,14 @@ class ArtisController {
   }
 
   static async deleteArtis(req, res) {
-    res.send({ msg: "ini controller untuk delete artis" });
+    try {
+      // Ambil ID dari parameter
+      const id = req.params.id;
+      const artisDelete = await ArtisModel.deleteOne({ _id: id });
+      res.status(200).send({ message: `${id} has been deleted ` });
+    } catch (error) {
+      res.status(500).send({ err: error });
+    }
   }
 }
 module.exports = ArtisController;

@@ -10,6 +10,7 @@ const router = express.Router();
 router.post("/", ArtisController.createNewArtis);
 router.get("/", ArtisController.getAllArtis);
 router.get("/:id", ArtisController.getArtisByID);
+router.get("/name/:name/genre/:genre", ArtisController.getArtisByCondition);
 router.patch("/:id", ArtisController.updateArtis);
 router.delete("/:id", ArtisController.deleteArtis);
 
