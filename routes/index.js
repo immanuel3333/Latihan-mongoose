@@ -12,6 +12,11 @@ router.get("/ping", (req, res) => {
   res.status(200).send(ready);
 });
 
+router.get("/", (req, res) => {
+  const ready = `<h1>Welcome to Artis API</h1>`;
+  res.status(200).send(ready);
+});
+
 router.use("/artis", artisRoutes);
 
 module.exports = router;
